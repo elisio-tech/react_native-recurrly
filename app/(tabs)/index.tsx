@@ -31,7 +31,7 @@ export default function App() {
 
       <Link
         href={{
-          pathname: "/subscription/[id]",
+          pathname: "/subscriptions/[id]",
           params: { id: "claude" },
         }}
         className="mt-4 p-4 bg-primary text-white rounded"

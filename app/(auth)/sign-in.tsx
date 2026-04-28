@@ -4,9 +4,9 @@ import { Text, View } from "react-native";
 
 export default function signIn() {
   return (
-    <View>
+    <View className="flex-1 justify-center items-center">
       <Text>Sign-in page</Text>
-      <Link href={"/(auth)/sign-up"}>Create Account</Link>
+      <Link href={"/"}>Create Account</Link>
     </View>
   );
 }
