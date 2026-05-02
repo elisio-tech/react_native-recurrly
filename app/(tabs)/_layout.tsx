@@ -1,9 +1,12 @@
 import { tabs } from "@/constants/data";
+import { colors, components } from "@/constants/theme";
 import { clsx } from "clsx";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Image, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+const tabBar = components.tabBar;
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
@@ -16,14 +19,31 @@ export default function TabLayout() {
         </View>
       </View>
     );
-  };
+   };
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: { position: "absolute", bottom: Math.max(insets.bottom) },
+        tabBarStyle: {
+          position: "absolute",
+          bottom: Math.max(insets.bottom, tabBar.horizontalInset),
+          height: tabBar.height,
+          marginHorizontal: tabBar.horizontalInset,
+          borderRadius: tabBar.radius,
+          elevation: 0,
+          backgroundColor: colors.primary,
+          borderTopWidth: 0,
+        },
+        tabBarItemStyle: {
+          paddingVertical: tabBar.height / 2 - tabBar.iconFrame / 1.6,
+        },
+        tabBarIconStyle: {
+          width: tabBar.iconFrame,
+          height: tabBar.iconFrame,
+          alignItems: "center",
+        },
       }}
     >
       {tabs.map((tab) => (
@@ -38,13 +58,6 @@ export default function TabLayout() {
           key={tab.name}
         />
       ))}
-
-      <Tabs.Screen
-        name="subscriptions/[id]"
-        options={{
-          href: null,
-        }}
-      />
     </Tabs>
   );
 }
