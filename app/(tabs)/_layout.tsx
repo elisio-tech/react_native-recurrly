@@ -19,7 +19,7 @@ export default function TabLayout() {
         </View>
       </View>
     );
-   };
+  };
 
   return (
     <Tabs
